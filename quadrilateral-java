@@ -1,0 +1,28 @@
+package bootcamp;
+
+/**
+ * Class from example the Methods topic.
+ */
+public class Quadrilateral {
+
+    public static void area(double side) {
+
+        System.out.println("Area of square:" + side * side);
+    }
+
+    public static void area(double lado1, double lado2) {
+
+        System.out.println("Area of rectangle:" + side1 * side2);
+    }
+
+    public static void area(double largeBase, double smallerBase, double height) {
+
+        System.out.println("Trapeze area:" + ((largeBase + smallerBase)*height) / 2);
+    }
+
+    public static void area(float diagonal1, float diagonal2) {
+
+        System.out.println("Rhombus area:" + (diagonal1 * diagonal2)/2);
+    }
+
+}
