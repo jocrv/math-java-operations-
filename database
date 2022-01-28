@@ -1,0 +1,81 @@
+package one.digitalinovation.laboojava.basedados;
+
+import one.digitalinovation.laboojava.entity.Client;
+import one.digitalinovation.laboojava.entity.Coupon;
+import one.digitalinovation.laboojava.entity.Request;
+import one.digitalinovation.laboojava.entity.Product;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Class responsible for simulating a database. This makes the insertions and deletions of the
+ * application. Updates are not allowed to make the application work easier.
+
+ */
+public class Base {
+
+    /**
+     * List that stores the registered products (books and notebooks). 
+     */
+    private List<Product> products;
+
+    /**
+     * List that stores registered orders.
+     */
+    private List<Request> request;
+
+    /**
+     * List that stores available coupons.
+     */
+    private List<Coupons> coupons;
+
+    /**
+     * Registered customer.
+     */
+    private Client client;
+
+    public Base() {
+
+        this.products = new ArrayList<>();
+        this.request = new ArrayList<>();
+        this.client = new Cliente();
+
+        this.coupons = new ArrayList<>();
+        coupons.add(new Cupom("COUPON2", 2));
+        coupons.add(new Cupom("COUPON", 5));
+        coupons.add(new Cupom("COUPON", 7));
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Coupons[] getCoupons() {
+        return coupons.toArray(new Coupons[coupons.size()]);
+    }
+
+    public Request[] getRequest() {
+        return request.toArray(new Request[request.size()]);
+    }
+
+    public Product[] getRequest() {
+        return products.toArray(new Product[product.size()]);
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
+    public void removeProduct(int position) {
+        products.remove(position);
+    }
+
+    public void addRequest(Request request) {
+        requests.add(request);
+    }
+
+    public void removeRequest(int position) {
+        request.remove(position);
+    }
+}
