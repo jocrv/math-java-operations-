@@ -1,0 +1,80 @@
+package bootcamp.database;
+
+import bootcamp.database.entity.Client; 
+import bootcamp.database.entity.Coupon;
+import bootcamp.database.entity.Order;
+import bootcamp.database.entity.Product;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Class responsible for simulating a database. This makes the insertions and deletions of the
+ * application. Updates are not allowed to make the application work easier.
+ */
+public class Base {
+
+    /**
+     * List that stores the registered products (books and notebooks).
+     */
+    private List<Product> products;
+
+    /**
+     * List that stores registered orders.
+     */
+    private List<Request> requests;
+
+    /**
+     * List storing available coupons.
+     */
+    private List<Coupon> coupons;
+
+    /**
+     * Client register.
+     */
+    private Client client;
+
+    public Base() {
+
+        this.produtos = new ArrayList<>();
+        this.pedidos = new ArrayList<>();
+        this.cliente = new Cliente();
+
+        this.coupons = new ArrayList<>();
+        cupons.add(new Coupon("COUPON2", 2));
+        cupons.add(new Coupon("COUPON5", 5));
+        cupons.add(new Coupon("COUPON7", 7));
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public Coupon[] getCoupon() {
+        return coupon.toArray(new Cupom[coupons.size()]);
+    }
+
+    public Request[] getRequest() {
+        return requests.toArray(new Request[request.size()]);
+    }
+
+    public Product[] getProducts() {
+        return products.toArray(new Prodcts[products.size()]);
+    }
+
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
+    public void removeProduct(int position) {
+        products.remove(position);
+    }
+
+    public void addRequest(Request request) {
+        request.add(request);
+    }
+
+    public void removeRequest(int position) {
+        request.remove(position);
+    }
+}
