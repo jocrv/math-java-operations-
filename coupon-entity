@@ -1,0 +1,46 @@
+package bootcamp; one.digitalinovation.laboojava.entity;
+
+/**
+ * Class that represents the coupon entity. This can be used when placing the order.
+ * to get a discount if desired.
+ * 
+ */
+public class Coupon {
+
+    /**
+     * Coupon descriptive code.
+     */
+    private String code;
+
+    /**
+     * Amount in percentage of discount.
+     */
+    private int discount;
+
+    /**
+     * coupon builder
+     * @param code coupon code
+     * @param discount Percentage of discount
+     */
+    public Coupon(String code, int discount) {
+        this.code = code;
+        this.discount = discount;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public double getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+    }
+
+}
