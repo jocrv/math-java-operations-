@@ -1,7 +1,7 @@
 package bootcamp;
 
 /**
- * Classe de exemplo para o exercício da Aula 3 de Variáveis, Tipos de Dado e Operadores aritméticos.
+ * Class of example to variable, type of data and arithmetics operations. 
  */
 public class Main {
 
