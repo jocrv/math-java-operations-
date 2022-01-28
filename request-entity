@@ -1,0 +1,18 @@
+package bootcamp package, java one.digitalinovation.laboojava.entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Class that represents the order entity, which is the purchase of products by a customer.
+ */
+public class Request {
+
+    //TODO Complete this class
+
+    //code
+    //client
+    //product
+    //total
+}
+
