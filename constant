@@ -1,0 +1,27 @@
+package bootcamp ;
+
+/**
+ * Gender of book sales
+ */
+public enum Gender {
+
+    DRAMA(15),
+
+    THRILLER(10),
+
+    ROMANCE(5);
+
+    private double fator;
+
+    /**
+     * Construct.
+     * @param factor Value by type that influences the freight calculation.
+     */
+    Gender(double fator) {
+        this.factor = factor / 100;
+    }
+
+    public double getFactor() {
+        return factor;
+    }
+}
