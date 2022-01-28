@@ -1,0 +1,126 @@
+package one.digitalinovation.laboojava.utilidade;
+
+import one.digitalinovation.laboojava.basedados.Base;
+import one.digitalinovation.laboojava.entidade.Request;
+import one.digitalinovation.laboojava.entidade.Book;
+import one.digitalinovation.laboojava.entidade.Product;
+import one.digitalinovation.laboojava.entidade.Coupon;
+import one.digitalinovation.laboojava.entidade.constantes.Gender;
+import one.digitalinovation.laboojava.negocio.ProductAffair;
+
+import java.util.Optional;
+import java.util.Scanner;
+
+/**
+ * Utility class to assist in reading data entries via keyboard.
+ */
+public final class DataReader  {
+
+	/**
+	 * Java class to handle keyboard input.
+	 */
+	private static Scanner scanner;
+	
+	static {
+		scanner = new Scanner(System.in);
+	}
+
+	/**
+	 * Read a specific data
+	 * @return Dada read
+	 */
+	public static String readData() {
+		
+		String text = scanner.nextLine();
+		
+		return text;
+	}
+
+	/**
+	 * Read the data of the book to be registered.
+	 * @return A book from the input data
+	 */
+	public static Book readBook () {
+
+		System.out.println("Register book...");
+		Book book = new Book ();
+
+		System.out.println("Enter the name ");
+		String name = readData ();
+		book.setName(name);
+
+		System.out.println("Enter the gender: DRAMA, THRILLER, ROMANCE");
+		String gender = readData();
+		book.setGender(Gender.valueOf(gender.toUpperCase()));
+
+		System.out.println("Enter the price (standart 0.0)");
+		String price = readData();
+		book.setPrice(Double.parseDouble(price));
+
+		return book;
+	}
+
+	/**
+	 * Read the data from the notebook to be registered.
+* @return A notebook from the input data
+*/
+//TODO Method to read the notebook
+
+	/**
+	 * Read the order data and return an object from it.
+* @return A request from the input data
+*/
+public static Order getOrder(Bank bank) {
+
+		ProductAffair produtAffair = new ProductAffair(base);
+
+		System.out.println("Enter the request...");
+		Request request = new Request();
+
+		String option = "s";
+		do {
+
+			System.out.println("Enter the code of product (book/CNotebook)");
+			String codigo = lerDado();
+
+			Optional<Product> result = productAffair.consult(code);
+			if (result.isPresent()) {
+
+				Product product = result.get();
+
+				System.out.println("Enter the quantity");
+				String quantity = readData();
+				product.setQuantity(Integer.parseInt(quantity));
+
+				request.getRequest().add(product);
+			} else {
+				System.out.println("Product nonexisten. Choose a valid product");
+			}
+
+			System.out.println("Do you wanna insert one more product? s/n");
+			option = readData ();
+		} while("s".equals(option));
+
+		return request;
+	}
+
+	/**
+	 * Read the coupon data and return an object from it.
+* @return The coupon from the input data
+*/
+	public static Optional<Coupon> readCoupon (Base base) {
+
+		System.out.println("If you want to use a coupon, choose between: COUPON2, COUPON5, COUPON7. If not, leave it blank.");
+
+		String discount = readData();
+
+		for (Coupons cupom: base.getCoupons()) {
+			if (coupons.getCode().equalsIgnoreCase(discount)) {
+				return Optional.of(coupon);
+			}
+		}
+
+		return Optional.empty();
+	}
+
+}
