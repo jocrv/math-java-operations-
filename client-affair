@@ -1,0 +1,54 @@
+client-affair
+
+package bootcamp, one.digitalinovation.laboojava.negocio;
+
+import one.digitalinovation.laboojava.basedados.Base;
+import one.digitalinovation.laboojava.entidade.Client;
+
+import java.util.Optional;
+
+/**
+ * Class to manipulate the entity {@link Client}.
+ */
+public class ClientAffair {
+
+    /**
+     * {@inheritDoc}.
+     */
+    private Base dataBase;
+
+    /**
+     * Constructor.
+     * @param base Base of data to acess all register of clients  
+     */
+    public ClientAffair (Base base) {
+        this.dataBase = base;
+    }
+
+    /**
+     * Query the customer by his CPF.
+     * @param cpf Customer's CPF
+     * @return The customer who has the CPF passed.
+     */
+    public Optional<Client> consult(String cpf) {
+
+        if (dataBase.getClient().getCpf().equals(cpf)) {
+            return Optional.of(dataBase.getClient());
+        } else {
+            return Optional.empty();
+        }
+    }
+
+    /**
+     * Register a new client.
+     * @param client New who will acess the application 
+     */
+    //TODO Do the inclusion of client 
+
+    /**
+     * Exclude a specific client.
+     * @param cpf CPF from client 
+     */
+    //TODO to do the exclusion of client 
+
+}
