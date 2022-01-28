@@ -1,0 +1,99 @@
+package bootcamp,one.digitalinovation.laboojava.negocio;
+
+import one.digitalinovation.laboojava.basedados.Base;
+import one.digitalinovation.laboojava.entity.Coupon;
+import one.digitalinovation.laboojava.entity.Request;
+import one.digitalinovation.laboojava.entity.Product;
+
+import java.time.LocalDate;
+import java.util.List;
+
+/**
+ * Class to manipulate the entity {@link Request}.
+ */
+public class RequestAffair {
+
+    /**
+     * {@inheritDoc}.
+     */
+    private Base dataBase;
+
+    /**
+     * Constructor.
+     * @param base Base of data to memory and acess the request 
+     */
+    public RequestAffair (Base base) {
+        this.dataBase = base;
+    }
+
+    private double calculateTotal(List<Product> products, Coupons coupon) {
+
+        double total = 0.0;
+        for (Product product: products) {
+            total += product.calculateTransport();
+        }
+
+        if (coupon != null) {
+            return  total * (1 - cupom.getDiscount());
+        } else {
+            return  total;
+        }
+
+    }
+
+    /**
+     * Save a new request without a discunt coupon. 
+     * @param newRequest to be guarantee on memory 
+     */
+    public void save (Request newRequest) {
+        saver(newRequest, null);
+    }
+
+    /**
+     * Save a new request to coupon with discount.
+     * @param newRequest to be stored
+     * @param cupom Coupon with discount to be use 
+     */
+    public void save (Request newRequest, Coupon coupon) {
+
+        //set code pattern
+        //Get the current day's date
+        //Format code
+
+        //Set code in order
+        //Set customer in order
+        //Calculate and set total
+        //add to bank
+        //Message
+    }
+
+    /**
+     * Delete an order from its tracking code.
+     * @param code Order code
+     */
+    public void exclude(String code) {
+
+        int requestExclude = -1;
+        for (int i = 0; i < dataBase.getRequest ().length; i++) {
+
+            Request request = dataBase.getRequest()[i];
+            if (request.getCode().equals(code)) {
+                requestDelete = i;
+                break;
+            }
+        }
+
+        if (requestDelete != -1) {
+            dataBase.removeRequest(requestDelete);
+            System.out.println("Request delete with sucess.");
+        } else {
+            System.out.println("Request unexistent.");
+        }
+    }
+
+    /**
+     * List of request done .
+     */
+    //TODO Methods with all requests.
+
+}
