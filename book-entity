@@ -1,0 +1,53 @@
+package bootcamp; one.digitalinovation.laboojava.entidade;
+
+import one.digitalinovation.laboojava.entidade.constantes.Gender;
+
+/**
+ * Class that represents a book, what is a specialization of a store product.
+ */
+public class Book extends Product {
+
+    /**
+     * Name of book.
+     */
+    private String name;
+
+    /**
+     * Gender of book.
+     */
+    private Gender gender;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    /**
+     * {@inheritDoc}.
+     */
+    @Override
+    public double calculateTransport () {
+        return (getPrice() * getQuantity()) * (1 + gender.getFactor());
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "name='" + name + '\'' +
+                ", gender=" + gender + '\'' +
+                ", code='" + getCode() + '\'' +
+                ", price='" + getPrice() + '\'' +
+                '}';
+    }
+}
