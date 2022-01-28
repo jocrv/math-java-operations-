@@ -1,0 +1,44 @@
+package bootcamp; one.digitalinovation.laboojava.entidade
+
+/**
+ * Class that represents the client entity. This one can place an order.
+ * 
+ */
+public class Client {
+
+    /**
+     * Customer's full name.
+     */
+    private String name;
+
+    /**
+     * Number of cpf (Register of Physical Person) of client.
+     */
+    private String cpf;
+
+    public Client() {
+        this.name = "Susan";
+        this.cpf = "123456789011";
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{ name='" + name + "'}";
+    }
+}
