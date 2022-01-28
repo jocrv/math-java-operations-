@@ -1,0 +1,90 @@
+package one.digitalinovation.laboojava.negocio;
+
+import one.digitalinovation.laboojava.basedados.Banco;
+import one.digitalinovation.laboojava.entidade.Produto;
+
+import java.util.Optional;
+
+/**
+ * Class to manipulate the entity  {@link Product}.
+ */
+public class ProductAffair {
+
+    /**
+     * {@inheritDoc}.
+     */
+    private Base dataBase;
+
+    /**
+     * Constructor.
+     * @param base Data base to store and access the products 
+     */
+    public ProductAffair(Base base) {
+        this.dataBase = base;
+    }
+
+    /**
+     * Save a new product (book or notebook) on store.
+     * @param newProduct Book or notebook which will be sale 
+     */
+    public void save (Product newProduct) {
+
+        String code = "PR%04d";
+        code = String.format(code, dataBase.getProducts().length);
+        newProduct.setCode(code);
+
+        boolean productRepet = false;
+        for (Product product: dataBase.getProducts()) {
+            if (product.getCode() == newProduct.getCode()) {
+                productRepet = true;
+                System.out.println("Product are register.");
+                break;
+            }
+        }
+
+        if (!productRepet) {
+            this.dataBase.addProduct (newProduct);
+            System.out.println("Product is register with sucess.");
+        }
+    }
+
+    /**
+     * Delete one produt by the code from register.
+     * @param code Code from register of product 
+     */
+    public void delete(String code) {
+        //TODO Implement delete procedure 
+    }
+
+    /**
+     * Obtain a product from its registration code.
+     * @param code Product registration code
+     * @return Optional indicating the existence or not of the Product
+     */
+    public Optional<Product> consult(String code) {
+
+        for (Product product: dataBase.getProduct()) {
+
+            if (product.getCode().equalsIgnoreCase(code)) {
+                return  Optional.of(product);
+            }
+        }
+
+        return Optional.empty();
+    }
+
+    /**
+     * List the product registered.
+     */
+    public void listarAll() {
+
+        if (dataBase.getProducts().length == 0) {
+            System.out.println("Doesn't exists the products registered");
+        } else {
+
+            for (Product product: dataBase.getProducts()) {
+                System.out.println(product.toString());
+            }
+        }
+    }
+}
