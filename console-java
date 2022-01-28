@@ -1,0 +1,136 @@
+package bootcamp;
+
+import one.digitalinovation.laboojava.database.Base;
+import one.digitalinovation.laboojava.entity.*;
+import one.digitalinovation.laboojava.trade.ClientTrade;
+import one.digitalinovation.laboojava.trade.RequestTrade;
+import one.digitalinovation.laboojava.trade.ProductTrade;
+import one.digitalinovation.laboojava.utility.ReaderData;
+
+import java.util.Optional;
+
+/**
+ * Class responsible for controlling application execution.
+ * 
+ */
+public class Start {
+
+    private static Client clientLogged = null;
+
+    private static Base base = new Base();
+
+    private static ClientTrade clientTrade = new ClientTrade (base);
+    private static RequestTrade requestTrade = new RequestTrade (base);
+    private static ProductTrade productTrade = new ProductTrade(base);
+
+    /**
+     *Utility method to launch the application.
+     * @param args Parameters that can be passed to aid execution.
+     */
+    public static void main(String[] args) {
+
+        System.out.println("Welcome to e-Shop");
+
+        String option = "";
+
+        while(true) {
+
+            if (clientLogged == null) {
+
+                System.out.println("Enter the cpf:");
+
+                String cpf = "";
+                cpf = ReaderData.readData();
+
+                identifyUser(cpf);
+            }
+
+            System.out.println("Select one option:");
+            System.out.println("1 - Register Book ");
+            System.out.println("2 - Delete Book ");
+            //ALL Challenge: Consult Book(name)
+            System.out.println("3 - Register Notebook ");
+            System.out.println("4 - Delete Notebook");
+            //ALL Challenge: Consult Notebook (matter)
+            System.out.println("5 - Make request");
+            System.out.println("6 - Delete request");
+            //TODO Desafio: Consultar Request (code)Pedido(código)
+            System.out.println("7 - List products");
+            System.out.println("8 - List requests");
+            System.out.println("9 - Log out");
+            System.out.println("10 - Exit");
+
+            option = ReaderData.readData();
+
+            switch (option) {
+                case "1":
+                    Book book = ReaderDara.readBook();
+                    productTrade.save(book);
+                    break;
+                case "2":
+                    System.out.println("Enter book code");
+                    String codeBook = ReaderData.readData();
+                    productTrade.delete(codeBook);
+                    break;
+                case "3":
+                    //ALL Register Notebook
+                    break;
+                case "4":
+                    //ALL Delete Notebook
+                    break;
+                case "5":
+                    Request request = ReaderData.readRequest(base);
+                    Optional<Coupon> coupon = ReaderData.readCoupon(base);
+
+                    if (coupon.isPresent()) {
+                        requestTrade.save (request, coupon.get());
+                    } else {
+                        requestTrade.save(request);
+                    }
+                    break;
+                case "6":
+                    System.out.println("Enter order code");
+                    String codeRequest = ReaderData.readData ();
+                    requestTrade.delete(codeRequest);
+                    break;
+                case "7":
+                    productTrade.listAll();
+                    break;
+                case "8":
+                    //ALL List all Orders
+                    break;
+                case "9":
+                    System.out.println(String.format("check back often %s!", clientLogged.getName()));
+                    clientLogged = null;
+                    break;
+                case "10":
+                    System.out.println("Application closed.");
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Option invalid.");
+                    break;
+            }
+        }
+    }
+
+    /**
+     * Search for the user in the database.
+     * @param cpf CPF of the user who wants to log in to the application
+     */ 
+     */
+    private static void identifyUser(String cpf) {
+
+        Optional<Client> result = clientTrade.consult(cpf);
+
+        if (result.isPresent()) {
+
+            Client client = result.get();
+            System.out.println(String.format("Hello %s! You're logged.", client.getName()));
+            clientLogged = client;
+        } else {
+            System.out.println("User not registered.");
+            System.exit(0);
+        }
+    }
+}
