@@ -1,4 +1,4 @@
-package one.digitalinovation.laboojava.basedados;
+package one.digitalinovation.laboojava.database;
 
 import one.digitalinovation.laboojava.entity.Client;
 import one.digitalinovation.laboojava.entity.Coupon;
@@ -39,12 +39,12 @@ public class Base {
 
         this.products = new ArrayList<>();
         this.request = new ArrayList<>();
-        this.client = new Cliente();
+        this.client = new Client();
 
         this.coupons = new ArrayList<>();
-        coupons.add(new Cupom("COUPON2", 2));
-        coupons.add(new Cupom("COUPON", 5));
-        coupons.add(new Cupom("COUPON", 7));
+        coupons.add(new Coupon("COUPON2", 2));
+        coupons.add(new Coupon("COUPON", 5));
+        coupons.add(new Coupon("COUPON", 7));
     }
 
     public Client getClient() {
