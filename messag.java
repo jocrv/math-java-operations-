@@ -2,6 +2,8 @@ package bootcamp
 
 /**
  * Example of class for Methods project.
+
+   Contribuidor: Eduardo Programador (www.eduardoprogramador.com)
  */
 public class Message {
 
@@ -15,6 +17,7 @@ public class Message {
             case 8:
             case 9:
             case 10:
+		messageThankYou();
             case 11:
             case 12:
                 messageGoodMorning();
@@ -55,6 +58,10 @@ public class Message {
 
     public static void messageGoodNight() {
         System.out.println("Good Night!");
+    }
+
+    public static void messageThankYou() {
+	System.out.println("Thank You!");
     }
 
 }
