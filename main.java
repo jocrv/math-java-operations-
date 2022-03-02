@@ -2,6 +2,8 @@ package bootcamp;
 
 /**
  * Principal class for exercise about Methods.
+
+   Contribuidor: Eduardo Programador (www.eduardoprogramador.com)
  */
 public class Main {
 
@@ -13,6 +15,8 @@ public class Main {
         Calculadora.subtraction(9, 1.8);
         Calculadora.multiplication(7, 8);
         Calculadora.divide(5, 2.5);
+	Calculadora.pow(2.4, 10);
+	Calculadora.remainder(123, 17);
 
         // Message
         System.out.println("Exercise message");
